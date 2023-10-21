@@ -9,7 +9,7 @@ const AddCard = () => {
 
     const handleDelete = id=>{
         console.log('Delete button clicked for ID:', id);
-fetch(`http://localhost:5000/cart/${id}`,{
+fetch(` https://tech-server-98qmjlf09-zobaidas-projects.vercel.app/cart/${id}`,{
     method:'DELETE'
 })
 .then(res=>res.json())

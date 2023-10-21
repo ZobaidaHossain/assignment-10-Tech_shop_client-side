@@ -19,7 +19,7 @@ const DetailsCard = ({coffee}) => {
     rating,
   };
 
-  fetch('http://localhost:5000/cart', {
+  fetch(' https://tech-server-98qmjlf09-zobaidas-projects.vercel.app/cart', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

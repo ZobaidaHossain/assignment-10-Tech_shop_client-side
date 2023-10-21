@@ -33,7 +33,7 @@ const navigate=useNavigate();
         lastLoggedAt:result.user?.metadata?.lastSignInTime
         };
 
-         fetch('http://localhost:5000/user',{
+         fetch(' https://tech-server-98qmjlf09-zobaidas-projects.vercel.app/user',{
             method:'PATCH',
             headers:{
                 'content-type':'application/json'
@@ -84,7 +84,7 @@ const navigate=useNavigate();
           email:result.user.email
           };
   
-           fetch('http://localhost:5000/user',{
+           fetch(' https://tech-server-98qmjlf09-zobaidas-projects.vercel.app/user',{
               method:'PATCH',
               headers:{
                   'content-type':'application/json'

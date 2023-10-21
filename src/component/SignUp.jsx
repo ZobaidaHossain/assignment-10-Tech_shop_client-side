@@ -55,7 +55,7 @@ else if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
 
         //new user has been created
         const user={email, password: password};
-        fetch('http://localhost:5000/user',{
+        fetch(' https://tech-server-98qmjlf09-zobaidas-projects.vercel.app/user',{
             method:'POST',
             headers:{
                 'content-type':'application/json'

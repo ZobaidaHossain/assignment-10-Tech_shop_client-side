@@ -23,7 +23,7 @@ const handleUpdateCoffee=event=>{
         console.log(updatedCoffee);
 
         //send data to the server
-        fetch(`http://localhost:5000/coffee/${_id}`,{
+        fetch(` https://tech-server-98qmjlf09-zobaidas-projects.vercel.app/coffee/${_id}`,{
             method:'PUT',
             headers:{
                 'content-type':'application/json'

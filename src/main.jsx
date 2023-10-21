@@ -34,19 +34,19 @@ loader: ()=>fetch('/product.json')
     // path:"/addCoffee/:brandName",
      path:"/addCoffee",
     element: <App></App>,
-    loader:()=>fetch('http://localhost:5000/coffee/')
+    loader:()=>fetch(' https://tech-server-98qmjlf09-zobaidas-projects.vercel.app/coffee/')
   },
   {
 //edit
 path:"/addCoffee/:brandName",
 // path:"/addCoffee",
 element: <Product></Product>,
-loader:()=>fetch('http://localhost:5000/coffee/')
+loader:()=>fetch(' https://tech-server-98qmjlf09-zobaidas-projects.vercel.app/coffee/')
   },
   {
     path:"/addCoffee/details/:id",
 element: <PrivateRoute><Details></Details></PrivateRoute>,
-loader:()=>fetch('http://localhost:5000/coffee/')
+loader:()=>fetch(' https://tech-server-98qmjlf09-zobaidas-projects.vercel.app/coffee/')
   },
   {
     path: "/addproduct",
@@ -56,7 +56,7 @@ loader:()=>fetch('http://localhost:5000/coffee/')
 ,{
   path:'/addCoffee/:brandName/updateCoffee/:id',
   element:<PrivateRoute><UpdateCoffee></UpdateCoffee></PrivateRoute>,
-  loader:({params})=>fetch(`http://localhost:5000/coffee/${params.id}`)
+  loader:({params})=>fetch(` https://tech-server-98qmjlf09-zobaidas-projects.vercel.app/coffee/${params.id}`)
 
 },
 {
@@ -72,7 +72,7 @@ loader:()=>fetch('http://localhost:5000/coffee/')
     path:"/cart",
     // element:<AddCard></AddCard>,
     element:<PrivateRoute><AddCard></AddCard></PrivateRoute>,
-    loader: ()=>fetch('http://localhost:5000/cart')
+    loader: ()=>fetch(' https://tech-server-98qmjlf09-zobaidas-projects.vercel.app/cart')
   }
 ]
   },
