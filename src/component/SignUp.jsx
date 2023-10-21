@@ -1,9 +1,15 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
-
+import { ToastContainer, toast } from "react-toastify";
+import { Link, useNavigate } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
 
 const SignUp = () => {
     const {createUser}=useContext(AuthContext);
+    const [registerError,setRegisterError]=useState("");
+    const [success,setSuccess]=useState('');
+
+    const navigate=useNavigate();
 
 const handleSignUp=e=>{
     e.preventDefault();
@@ -11,9 +17,41 @@ const handleSignUp=e=>{
     const email=form.email.value;
     const password=form.password.value;
     console.log(email,password);
+
+ //reset error & success
+ setRegisterError('');
+ setSuccess('');
+
+ if(password.length <6){
+   setRegisterError('password should be 6 character or longer');
+   return;
+}
+
+else if (!/[A-Z]/.test(password)){
+   setRegisterError('your password should have at least one upper case characters.')
+   return;
+}
+else if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
+ setRegisterError('Your password should contain at least one special character.');
+ return;
+}
+
+
+//create user 
     createUser(email,password)
     .then(result=>{
         console.log(result.user);
+
+        setSuccess('user Register successfully');
+        //toast
+        toast.success("Register successful", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
 
         //new user has been created
         const user={email, password: password};
@@ -32,10 +70,12 @@ const handleSignUp=e=>{
             }
         })
 
-
+        e.target.reset();
+        navigate('/');
     })
     .catch(error=>{
-        console.error(error)
+        console.error(error);
+        setRegisterError(error.message);
     })
     
 }
@@ -65,7 +105,16 @@ const handleSignUp=e=>{
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Register</button>
               </div>
+              <p>Already have an account? please <Link className="text-blue-600"to='/signin'> Login</Link></p>
             </form>
+            <ToastContainer />
+            {
+                    registerError && <p className="text-red-700">{registerError}</p>
+                }
+                {
+                    success && <p className="text-green-600">{success}</p>
+                    
+                }
           </div>
         </div>
       </div>

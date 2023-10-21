@@ -1,10 +1,17 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
-
+import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SignIn = () => {
 
-    const {signInUser}=useContext(AuthContext);
+
+    const {signInUser,signInWithGoogle}=useContext(AuthContext);
+    const [success,setSuccess]=useState('');
+const [loginError, setLoginError] = useState("");
+
+const navigate=useNavigate();
 
     const handleSignIn=e=>{
         e.preventDefault();
@@ -12,10 +19,16 @@ const SignIn = () => {
     const email=form.email.value;
     const password=form.password.value;
     console.log(email,password);
+
+
+
     signInUser(email,password)
     
     .then(result=>{
         console.log(result.user);
+        setSuccess('');
+       
+
         const user={email,
         lastLoggedAt:result.user?.metadata?.lastSignInTime
         };
@@ -34,12 +47,66 @@ const SignIn = () => {
           
         })
 
+        
+           
+      
+       
+        e.target.reset();
+        navigate('/');
+
 
     })
     .catch(error=>{
-        console.error(error)
+        console.error(error);
+        setLoginError(error.message);
+        toast.error("Invalid email or password", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+        if (error.code === "auth/invalid-login-credentials" || error.code === "auth/wrong-password") {
+          setLoginError("Invalid email or password");
+        } else {
+          setLoginError(error.message);
+        }
     })
 }
+
+    //sign in with google
+    const handleGoogleSignIn=()=>{
+      signInWithGoogle()
+      .then(result=>{
+        console.log(result.user)
+        const user={
+          email:result.user.email
+          };
+  
+           fetch('http://localhost:5000/user',{
+              method:'PATCH',
+              headers:{
+                  'content-type':'application/json'
+              },
+              body:JSON.stringify(user)
+  
+          })
+          .then(res=>res.json())
+          .then(data=>{
+            console.log(data);
+            
+          })
+      
+        navigate('/');
+      })
+      .catch(error=>{
+        console.error(error.message)
+      })
+    }
+
+
+
     
     return (
         <div className="hero min-h-screen bg-base-200">
@@ -66,7 +133,20 @@ const SignIn = () => {
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Login</button>
               </div>
+
+              <p>New to this website ? Please <Link className="text-blue-600" to="/signup">Register</Link></p>
+          <p>
+          <button onClick={handleGoogleSignIn}className="btn btn-primary ml-10 mt-3">Login with Google</button></p>
+
             </form>
+            <ToastContainer></ToastContainer>
+            {
+                    loginError && <p className="text-red-700">{loginError}</p>
+                }
+                {
+                    success && <p className="text-green-600">{success}</p>
+                    
+                }
           </div>
         </div>
       </div>

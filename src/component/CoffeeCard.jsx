@@ -40,8 +40,9 @@ const handleDelete = _id=>{
 
     return (
         <div className="card card-side bg-base-100 shadow-xl m-4">
-  <figure><img className="w-[21.25rem] h-[11rem]" src={photo} alt="Movie"/></figure>
-  <div className=" flex justify-between w-full p-4">
+          <figure><img className="w-full h-[11rem]" src={photo} alt="Movie"/></figure>
+  {/* <figure><img className="w-[21.25rem] h-[11rem]" src={photo} alt="Movie"/></figure> */}
+  <div className=" flex justify-between w-1/2 p-4">
    <div>
    <h2 className="card-title">Name:{name}</h2>
     <p>Brand Name: {brand}</p>
@@ -52,14 +53,18 @@ const handleDelete = _id=>{
    </div>
     <div className="card-actions justify-end">
     <div className="btn-group btn-group-vertical space-y-4">
-  <button className="btn ">view</button>
+      <Link to={`/addCoffee/details/${_id}`}>
+      <button className="btn ">Details</button>
+      </Link>
+  
    <Link to={`updateCoffee/${_id}`}>
-  <button className="btn">Edit</button>
+  <button className="btn">Update</button>
    </Link>
   
   <button 
 onClick={()=>handleDelete(_id)}
-  className="btn bg-red">X</button>
+  className="btn bg-red">Delete</button>
+
 </div>
     </div>
   </div>
