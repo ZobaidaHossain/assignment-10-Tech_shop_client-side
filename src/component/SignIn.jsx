@@ -119,7 +119,7 @@ const navigate=useNavigate();
             <form onSubmit={handleSignIn}className="card-body">
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Email</span>
+                  <span className="label-text">Your Email</span>
                 </label>
                 <input type="email" name="email" placeholder="email" className="input input-bordered" required />
               </div>
