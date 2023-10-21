@@ -55,7 +55,7 @@ const Product = () => {
 </div>
       {/* show product */}
       <div className='m-20'>
-     <h1 className='text-6xl text-center text-purple-600'>Our Products</h1>
+     <h1 className='text-6xl text-center text-purple-600'>Your desire Products</h1>
      {hasAvailableProducts ? (
      <div className='grid grid-cols-1 lg:grid-cols-2 gap-4'>
 
