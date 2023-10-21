@@ -70,7 +70,7 @@ const containerStyle = isDarkTheme ? darkThemeStyle : lightThemeStyle;
          </div>
 
          <div className="grid justify-items-center m-5  ">
-         <button className="btn btn-primary rounded-none m-5" >Customer Review</button> 
+         <button className="btn btn-primary rounded-none m-5" >Our Customer Review</button> 
          <Gallary></Gallary>
          </div>
 
