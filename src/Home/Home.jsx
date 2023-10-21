@@ -42,7 +42,7 @@ const containerStyle = isDarkTheme ? darkThemeStyle : lightThemeStyle;
     console.log(news);
     return (
         <div style={containerStyle}>
-           <button  className="btn btn-neutral justify-center items-center"onClick={toggleTheme}> Dark Theme</button>
+           <button  className="btn btn-neutral justify-center items-center ml-20 "onClick={toggleTheme}> Dark Theme</button>
           
           <Banner></Banner>
         
