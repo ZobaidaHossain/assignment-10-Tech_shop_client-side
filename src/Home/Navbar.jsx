@@ -10,7 +10,7 @@ const Navbar = () => {
   const handleLogOut=()=>{
     logOut()
     .then(()=>{
-      console.log('user login successfully');
+      console.log('user login successfully yahooo');
     })
     .catch(error=>console.log(error));
   }
