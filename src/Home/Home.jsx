@@ -48,7 +48,7 @@ const containerStyle = isDarkTheme ? darkThemeStyle : lightThemeStyle;
         
            
            <div className="grid justify-items-center m-5 ">
-         <button className="btn btn-primary rounded-none ">OUR BRAND</button> 
+         <button className="btn btn-primary rounded-none ">OUR Special BRAND </button> 
          </div>
 
          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 " >
